@@ -35,7 +35,11 @@ Route::group([
     Route::group([
         'middleware' => 'auth:sanctum',
     ], function () {
-        Route::resource('tasks', \App\Http\Controllers\TaskController::class);
+        Route::get('/tasks', [\App\Http\Controllers\TaskController::class, 'index']);
+        Route::post('/tasks', [\App\Http\Controllers\TaskController::class, 'store']);
+        Route::get('/tasks/{id}', [\App\Http\Controllers\TaskController::class, 'show']);
+        Route::put('/tasks/{id}', [\App\Http\Controllers\TaskController::class, 'update']);
+        Route::delete('/tasks/{id}', [\App\Http\Controllers\TaskController::class, 'delete']);
     });
 
  
