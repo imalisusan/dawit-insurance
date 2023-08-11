@@ -15,7 +15,7 @@ return new class extends Migration
             $table->ulid('id')->primary();
             $table->string('title');
             $table->text('description');
-            $table->string('status');
+            $table->tinyInteger('status');
             $table->timestamps();
         });
     }
