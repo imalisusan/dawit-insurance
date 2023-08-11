@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Jobs\Task\GetTaskByIDJob;
 use App\Http\Resources\Task\Resource;
 use App\Http\Requests\Task\StoreRequest;
+use App\Http\Requests\Task\UpdateRequest;
 
 class TaskController extends Controller
 {
@@ -39,7 +40,24 @@ class TaskController extends Controller
         return new Resource($task);
     }
 
-    public function update(Request $request, $id)
+    public function update(UpdateRequest $request, $id)
+    {
+        $validatedData = $request->validated();
+
+        $task = GetTaskByIDJob::dispatchSync($id);
+
+        if (! $task) {
+            return response()->json([
+                'message' => 'Task does not exist',
+            ], 404);
+        }
+
+        $task->update($validatedData);
+
+        return new Resource($task);
+    }
+
+    public function destroy($id)
     {
         $task = GetTaskByIDJob::dispatchSync($id);
 
@@ -49,16 +67,11 @@ class TaskController extends Controller
             ], 404);
         }
 
-        $task->update($data);
-
-        return new Resource($task);
-    }
-
-    public function destroy(Task $task)
-    {
         $task->delete();
 
-        return response()->json(null, 204);
+        return response()->json([
+            'message' => 'Task deleted',
+        ], 404);
     }
     
 }

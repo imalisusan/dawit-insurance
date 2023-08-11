@@ -2,6 +2,7 @@
 
 namespace App\Jobs\Task;
 
+use App\Models\Task;
 use Illuminate\Foundation\Bus\Dispatchable;
 
 class GetTaskByIDJob 
