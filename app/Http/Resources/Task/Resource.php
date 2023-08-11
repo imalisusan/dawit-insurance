@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Resources\Auth;
+namespace App\Http\Resources\Task;
 
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
@@ -15,10 +15,10 @@ class Resource extends JsonResource
     public function toArray(Request $request)
     {
         return [
-            'access_token' => $this->createToken('token-name')->plainTextToken,
             'id' => $this->id,
-            'name' => $this->name,
-            'email' => $this->email,
+            'title' => $this->title,
+            'description' => $this->description,
+            'status' => $this->status,
         ];
     }
 }

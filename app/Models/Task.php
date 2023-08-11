@@ -9,4 +9,13 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 class Task extends Model
 {
     use HasFactory, HasUlids;
+
+    protected $fillable = [
+        'title',
+        'description',
+        'status',
+    ];
+
+    
+
 }

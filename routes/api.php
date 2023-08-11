@@ -35,13 +35,7 @@ Route::group([
     Route::group([
         'middleware' => 'auth:sanctum',
     ], function () {
-        Route::group([
-            'prefix' => 'tasks',
-            'as' => 'tasks.',
-        ], function () {
-            Route::get('/', [\App\Http\Controllers\TaskController::class, 'index'])
-                ->name('index');
-        });
+        Route::resource('tasks', \App\Http\Controllers\TaskController::class);
     });
 
  

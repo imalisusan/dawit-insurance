@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
+use App\Jobs\Auth\GetUserByEmailJob;
 use Illuminate\Support\Facades\Hash;
 use App\Http\Resources\Auth\Resource;
 use App\Http\Requests\Auth\LoginRequest;
-use App\Jobs\Auth\GetUserByPhoneNumberJob;
 use App\Http\Requests\Auth\RegisterRequest;
 
 class LoginController extends Controller
@@ -15,7 +16,7 @@ class LoginController extends Controller
     {
         $validated = $request->validated();
 
-        $user = GetUserByPhoneNumberJob::dispatchSync($validated['phone_number']);
+        $user = GetUserByEmailJob::dispatchSync($validated['email']);
 
         if (! $user) {
             return response()->json([
@@ -36,7 +37,7 @@ class LoginController extends Controller
     {
         $validated = $request->validated();
 
-        $user = GetUserByPhoneNumberJob::dispatchSync($validated['phone_number']);
+        $user = GetUserByEmailJob::dispatchSync($validated['email']);
 
         if ($user) {
             return response()->json([

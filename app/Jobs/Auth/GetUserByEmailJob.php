@@ -5,7 +5,7 @@ namespace App\Jobs\Auth;
 use App\Models\User;
 use Illuminate\Foundation\Bus\Dispatchable;
 
-class GetUserByPhoneNumberJob
+class GetUserByEmailJob
 {
     use Dispatchable;
 
@@ -13,9 +13,7 @@ class GetUserByPhoneNumberJob
      * Create a new job instance.
      */
     public function __construct(
-        private readonly string $phoneNumber,
-        public ?array $filters = [],
-        public ?array $relations = [],
+        private readonly string $email,
     ) {
     }
 
@@ -25,7 +23,7 @@ class GetUserByPhoneNumberJob
     public function handle()
     {
         return User::query()
-            ->where('phone_number', $this->phoneNumber)
+            ->where('email', $this->email)
             ->first();
     }
 }
