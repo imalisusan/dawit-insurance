@@ -17,7 +17,7 @@ The purpose of this project is to demonstrate how to create a simple RESTful API
 Clone the repository
 
 ```bash
-git clone https://github.com/imalisusan/dawit-insurance
+git clone https://github.com/imalisusan/dawit-interview
 ```
 
 ## Getting Started 🚀

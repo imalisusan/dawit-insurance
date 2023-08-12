@@ -39,7 +39,7 @@ Route::group([
         Route::post('/tasks', [\App\Http\Controllers\TaskController::class, 'store']);
         Route::get('/tasks/{id}', [\App\Http\Controllers\TaskController::class, 'show']);
         Route::put('/tasks/{id}', [\App\Http\Controllers\TaskController::class, 'update']);
-        Route::delete('/tasks/{id}', [\App\Http\Controllers\TaskController::class, 'delete']);
+        Route::delete('/tasks/{id}', [\App\Http\Controllers\TaskController::class, 'destroy']);
     });
 
  
