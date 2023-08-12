@@ -56,7 +56,6 @@ php artisan serve
 - POST /api/auth/register - Register and log in to obtain an access token.
 - POST /api/auth/login - Log in to obtain an access token.
 - Use the obtained access token in the headers(Bearer Token) of your API requests.
-- DELETE /api/tasks/{id} - Delete a task
 
 ## API Endpoints
 The API exposes the following endpoints:
