@@ -51,6 +51,8 @@ php artisan db:seed
 php artisan serve
 ```
 
+## Authentication
+This API uses Laravel Sanctum for authentication. To authenticate, you need to register and log in as a user. Once logged in, you will receive an authentication token that you should include in the headers of your API requests.
 
 ## Usage
 - POST /api/auth/register - Register and log in to obtain an access token.
